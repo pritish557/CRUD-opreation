@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+    
+        
+        <table border=2>
+            <tr>
+                <td><h2>Enter Product Details :</h2></td>
+                <td><h2>Our products list:</h2></td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <form action="adddata" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                <table border=5>
+                        <tr>
+                            <td><label>Product type :</label></td>
+                            <td><input type="text" name ="ptype"> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Product Name :</label></td>
+                            <td><input type="text" name ="pname"></td>
+                        </tr>
+                        <tr>
+                        <td> <label>Descr. </label></td>
+                        <td><input type="textarea" name ="desc"> </td>
+                        </tr>
+                        <tr>
+                        <td> <label>Price :</label></td>
+                        <td> <input type="text" name ="price"> </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Product Image :</label></td>
+                            <td> <input type="file" name = "img"></td>
+                        </tr>
+                        <tr>
+                            <td>   testing       </td>
+                            <td><input type="submit" value="submit"> </td>
+                        </tr>
+                </table>
+            </form>
+                </td>
+           
+            
+            <td>
+                    <table border=2 cellpadding=10>
+                        <tr>
+                            <th>Type</th>
+                            <th>Product Name</th>
+                            <th>Descr.</th>
+                            <th>Price</th>
+                            <th>Image </th>
+                            <th>Manage Info </th>
+                        </tr>
+                        {% for instance  in myvar %}
+                        <tr>
+                            <td>{{ instance.product_type }}</td>
+                            <td>{{ instance.product_name }}</td>
+                            <td>{{ instance.descr }}</td>
+                            <td>{{ instance.price }}</td>
+                            <td><img src="{{ instance.image.url }}" height=60>{{ instance.image.url}}</td>
+                            <td><a href="{% url 'editpageinfo' instance.id %}">Edit</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+    
+        </table>            
+   
+
+
+
+
+{% endblock %}

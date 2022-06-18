@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<table border=5>
+    <tr>
+        <td><label>Product type :</label></td>
+        <td><input type="text" name ="TBX_ptype" value={{myeditdata.product_type}}> </td>
+    </tr>
+    <tr>
+        <td><label>Product Name :</label></td>
+        <td><input type="text" name ="TBX_pname" value={{myeditdata.product_name}}></td>
+    </tr>
+    <tr>
+    <td> <label>Descr. </label></td>
+    <td><textarea name ="TBX_desc" rows=5 cols=50>{{myeditdata.descr}} </textarea></td>
+    </tr>
+    <tr>
+    <td> <label>Price :</label></td>
+    <td> <input type="text" name ="TBX_price" value={{myeditdata.price}}> </td>
+    </tr>
+    <tr>
+        <td> <label>Product Image :</label></td>
+        <td> 
+            <img src="{{myeditdata.image.url}}" height=75><br>
+            <input type="file" name = "FU_img"></td>
+    </tr>
+    <tr>
+        <td>   testing       </td>
+        <td><input type="submit" value="UPDATE INFO"> </td>
+    </tr>
+</table>
+</form>
+
+{% endblock %}

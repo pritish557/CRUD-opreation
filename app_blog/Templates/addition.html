@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+    {% block content %}
+    <form action="add" method="POST">
+        {% csrf_token %}
+        <h2>Addition Program</h2>
+        <label>Enter 1st number :</label>
+        <input type="text" name='fno'> <br>
+        <label>Enter 2nd number :</label>
+        <input type="text" name='sno'> <br>
+        <input type="submit" value='submit'>
+        </form>
+        {% endblock %}
